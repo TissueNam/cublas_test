@@ -42,7 +42,12 @@ int main(void){
     // Initilize host memory 
     for (col = 0; col < N; col++){
         for(row = 0; row < M; row++){
-            h_A[IDX2C(row, col, M)] = (float)(row*N + col + 1);
+            /*
+                TODO: Put your code here ...
+
+                - Initialize your matrix h_A with sequential numbers in column-major format
+                - Hint: Look at the matrix initialization in cublas_v2_gemm.cu :)
+            */
         }
     }
     for (row = 0 ; row < N ; row++){
@@ -88,8 +93,14 @@ int main(void){
     }
 
     // Run cublas 32bit integer type gemm
-    stat = cublasSgemv(handle, CUBLAS_OP_N, M, N, &alpha, d_A, M, d_X, 1, &beta, d_Y, 1);
-    printf("stat: %d\n", stat);
+    /*
+        TODO: Put your code here ...
+
+        stat = cublasSgemv(...);
+
+    */
+    
+    // printf("stat: %d\n", stat); // For debugging
     if(stat != CUBLAS_STATUS_SUCCESS) {
         printf ("cublas gemv error\n");
         cudaFree(d_A);

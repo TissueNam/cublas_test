@@ -100,7 +100,10 @@ int main(void){
     stat = cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, M, M, N, &alpha, d_A, M, d_B, N, &beta, d_C, M);
     printf("%d",stat);
     
-    if (stat != CUBLAS_STATUS_SUCCESS) {
+    if (stat != CUBLAS_STATUS_SUCCESS) { 
+    // Occurs problem in Changmo's Device
+    // cublasSgemm() returns error code 13 (CUBLAS_STATUS_EXECUTION_FAILED), 
+    // while not showing problem in calculation result.
         printf ("cublas gemm error\n");
         cudaFree(d_A);
         cudaFree(d_B);
