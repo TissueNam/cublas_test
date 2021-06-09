@@ -100,7 +100,7 @@ int main(void){
     stat = cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, M, M, N, &alpha, d_A, M, d_B, N, &beta, d_C, M);
     printf("%d",stat);
     
-    if (stat == CUBLAS_STATUS_SUCCESS) {
+    if (stat != CUBLAS_STATUS_SUCCESS) {
         printf ("cublas gemm error\n");
         cudaFree(d_A);
         cudaFree(d_B);
